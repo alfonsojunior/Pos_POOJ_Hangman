@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thiago.jessica.alfonso.jogodearitmetica;
+package br.com.thiago.jessica.alfonso.jogodearitmetica;
 
-import static com.thiago.jessica.alfonso.jogodearitmetica.Operacao.ADICAO;
+import static br.com.thiago.jessica.alfonso.jogodearitmetica.Operacao.ADICAO;
+
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -37,12 +39,21 @@ public class JogoAritmetica {
             case ADICAO:
                 this.respostaCorreta = n1+n2;
                 return n1+"+"+n2;
+            case SUBTRACAO:
+                this.respostaCorreta = n1-n2;
+                return n1+"-"+n2;
+            case MULTIPLICACAO:
+                this.respostaCorreta = n1*n2;
+                return n1+"*"+n2;
+            case DIVISAO:
+                this.respostaCorreta = n1/n2;
+                return n1+"/"+n2;
             default: 
                 return "Operacao nao definida";              
         }
     }
 
-    void jogar() {
+    public void jogar() {
         Random rand = new Random();
         Scanner scanner = new Scanner(System.in);
         do {
@@ -69,7 +80,9 @@ public class JogoAritmetica {
     }
    
     public static void main(String[] args){
-        JogoAritmetica jogo = new JogoAritmetica(6, 1, 10, new Operacao[] { ADICAO });
+    	//ArrayList<Operacao> op = new ArrayList<Operacao>();
+    	Operacao[] op = new Operacao[] {Operacao.ADICAO, Operacao.SUBTRACAO};
+        JogoAritmetica jogo = new JogoAritmetica(6, 1, 10, op);
         jogo.jogar();
     }
     
