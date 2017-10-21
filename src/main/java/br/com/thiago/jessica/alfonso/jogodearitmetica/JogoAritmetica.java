@@ -52,6 +52,11 @@ public class JogoAritmetica extends Jogo<String, Double> {
     	this.numeroExpressoes--;
     }
     
+    private void setExpressao(Expressao exp) {
+		this.expressao = exp;
+		this.numeroExpressoes--;
+	}
+    
     public String getExpressao() {
     	return this.expressao.toString();
     }
@@ -65,7 +70,13 @@ public class JogoAritmetica extends Jogo<String, Double> {
         }
     }
     
-    public boolean won(){
+    // Polimorfismo bitch!
+    public String jogar(Double resp, Expressao exp) {
+    	setExpressao(exp);
+    	return jogar(resp);
+    }
+
+	public boolean won(){
         return this.pontos >= this.pontosMinimos && this.numeroExpressoes <= 0;
     }
    
